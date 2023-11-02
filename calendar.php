@@ -23,9 +23,11 @@
         }
 
         .calendar {
-            display: block;
+            display: flex;
+            flex-wrap: wrap;
             width: 60%;
             height: 100%;
+            background-color: lightcoral;
         }
 
         .switch {
@@ -39,20 +41,24 @@
 
         a {
             display: block;
+            width: 100%;
+            height: 30%;
             background-color: red;
         }
 
         /* 標題 */
         .title {
+            width: 100%;
             height: 10%;
             background-color: gold;
             text-align: center;
-            font-size: 30px;
+            font-size: 60px;
         }
 
         /* 星期 */
         .dateline {
             background-color: lightgrey;
+            width: 100%;
             height: 10%;
         }
 
@@ -81,6 +87,7 @@
             text-align: center;
             border: 1px solid black;
             border-collapse: collapse;
+            font-size: 40px;
         }
 
         .datecase>table {
@@ -98,6 +105,8 @@
     if (isset($_GET["month"]) && isset($_GET["year"])) {
         $month = $_GET["month"];
         $year = $_GET["year"];
+        $nowmonth=date("m");
+        $nowyear=date("Y");
     } else {
         $month = date("m");
         $year = date("Y");
@@ -118,9 +127,7 @@
         </div>
         <div class="calendar">
             <div class="title">
-                <h1>
                     <?= date("$year 年 $month 月") ?>
-                </h1>
             </div>
             <div class="dateline">
                 <table>
@@ -177,6 +184,7 @@
             }
             ?>
             <a href="?year=<?= $prevyear; ?>&month=<?= $prev; ?>">上一個月</a>
+            <a href="?year=<?=$nowyear; ?>&month=<?=$nowmonth;?>">回到現在</a>
             <a href="?year=<?= $nextyear; ?>&month=<?= $next; ?>">下一個月</a>
         </div>
     </div>
