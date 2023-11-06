@@ -34,7 +34,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background-color: lightgreen;
+            /* background-color: lightgreen; */
             width: 10%;
             height: 80%;
         }
@@ -42,8 +42,8 @@
         a {
             display: block;
             width: 100%;
-            height: 30%;
-            background-color: red;
+            height: 26%;
+            /* background-color: red; */
         }
 
         /* 標題 */
@@ -113,11 +113,15 @@
         }
 
         .prev{
-            background-image: url(./img/prev.jpg);
-            background-size: cover;
+            background-image: url(./img/prev.png);
+            background-size: contain;
         }
         .next{
-            background-image: url(./img/next.jpg);
+            background-image: url(./img/next.png);
+            background-size: cover;
+        }
+        .home{
+            background-image: url(./img/home.png);
             background-size: cover;
         }
     </style>
@@ -208,9 +212,9 @@
                 $prev = $month - 1;
             }
             ?>
-            <a href="?year=<?= $prevyear; ?>&month=<?= $prev; ?>" class="prev">上一個月</a>
-            <a href="?year=<?= $nowyear; ?>&month=<?= $nowmonth; ?>">回到現在</a>
-            <a href="?year=<?= $nextyear; ?>&month=<?= $next; ?>" class="next">下一個月</a>
+            <a href="?year=<?= $prevyear; ?>&month=<?= $prev; ?>" class="prev"></a>
+            <a href="?year=<?= $nowyear; ?>&month=<?= $nowmonth; ?>" class="home"></a>
+            <a href="?year=<?= $nextyear; ?>&month=<?= $next; ?>" class="next"></a>
         </div>
     </div>
 
