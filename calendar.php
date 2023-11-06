@@ -27,7 +27,7 @@
             flex-wrap: wrap;
             width: 60%;
             height: 100%;
-            background-color: lightcoral;
+            /* background-color: lightcoral; */
         }
 
         .switch {
@@ -94,7 +94,32 @@
             width: 100%;
             height: 100%;
         }
-        
+
+        .red {
+            color: red;
+            background-color: white;
+        }
+
+        .red:hover {
+            background-color: lightgray;
+        }
+
+        .bg-w {
+            background-color: white;
+        }
+
+        .bg-w:hover {
+            background-color: lightgray;
+        }
+
+        .prev{
+            background-image: url(./img/prev.jpg);
+            background-size: cover;
+        }
+        .next{
+            background-image: url(./img/next.jpg);
+            background-size: cover;
+        }
     </style>
 </head>
 
@@ -105,8 +130,8 @@
     if (isset($_GET["month"]) && isset($_GET["year"])) {
         $month = $_GET["month"];
         $year = $_GET["year"];
-        $nowmonth=date("m");
-        $nowyear=date("Y");
+        $nowmonth = date("m");
+        $nowyear = date("Y");
     } else {
         $month = date("m");
         $year = date("Y");
@@ -127,7 +152,7 @@
         </div>
         <div class="calendar">
             <div class="title">
-                    <?= date("$year 年 $month 月") ?>
+                <?= date("$year 年 $month 月") ?>
             </div>
             <div class="dateline">
                 <table>
@@ -151,9 +176,9 @@
                             $addday = 7 * $i + $j;
                             $monthallday = strtotime("+$addday days", strtotime($monthspaceday));
                             if (date("w", $monthallday) == 0 || date("w", $monthallday) == 6) {
-                                echo "<td style='color:red' >";
+                                echo "<td class=red>";
                             } else {
-                                echo "<td>";
+                                echo "<td class=bg-w>";
                             }
                             if (date("m", $monthallday) == date("m", strtotime($monthfirstday))) {
                                 echo date("j", $monthallday);
@@ -183,9 +208,9 @@
                 $prev = $month - 1;
             }
             ?>
-            <a href="?year=<?= $prevyear; ?>&month=<?= $prev; ?>">上一個月</a>
-            <a href="?year=<?=$nowyear; ?>&month=<?=$nowmonth;?>">回到現在</a>
-            <a href="?year=<?= $nextyear; ?>&month=<?= $next; ?>">下一個月</a>
+            <a href="?year=<?= $prevyear; ?>&month=<?= $prev; ?>" class="prev">上一個月</a>
+            <a href="?year=<?= $nowyear; ?>&month=<?= $nowmonth; ?>">回到現在</a>
+            <a href="?year=<?= $nextyear; ?>&month=<?= $next; ?>" class="next">下一個月</a>
         </div>
     </div>
 
